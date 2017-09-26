@@ -23,4 +23,12 @@ public class Note extends Record {
                 ", text='" + text + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean contains(String str) {
+        String strLower = str.toLowerCase();
+        String textLower = text.toLowerCase();
+        return textLower. contains(strLower);
+    }
+
 }

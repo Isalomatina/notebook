@@ -40,6 +40,15 @@ public class Notebook implements ShellDependent {
     }
 
     @Command
+    public void createAlarm(@Param(name="time") String time,
+                            @Param(name ="text")String text){
+        Alarm a = new Alarm();
+        a.setText(text);
+        a.setTime(time);
+        records.add(a);
+    }
+
+    @Command
     public void remove(@Param(name = "id") int id) {
         for (int i = 0; i < records.size(); i++) {
             Record r = records.get(i);
@@ -68,6 +77,16 @@ public class Notebook implements ShellDependent {
         return records;
     }
 
+    @Command
+    public List<Record> find(String str) {
+        List<Record> result = new ArrayList<>();
+        for(Record r: records) {
+            if(r.contains(str)) {
+                result.add(r);
+            }
+        }
+        return result;
+    }
 
     // need for cliche to allow subshells
     @Override

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Person extends Record {
+public class Person extends Note {
     private String firstName;
     private String lastName;
     private String email;
@@ -62,5 +62,25 @@ public class Person extends Record {
                 ", email='" + email + '\'' +
                 ", phones=" + phones +
                 '}';
+    }
+
+    @Override
+    public boolean contains(String str) {
+        if (super.contains(str)) {
+            return true;
+        } else if ( firstName.toLowerCase().contains(str.toLowerCase())) {
+            return true;
+        } else if ( lastName.toLowerCase().contains((str.toLowerCase()))){
+            return true;
+        } else if (email.toLowerCase().contains(str.toLowerCase())) {
+            return true;
+        } else {
+            for (String p: phones) {
+                if(p.contains(str)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

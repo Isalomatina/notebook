@@ -3,17 +3,19 @@ package tsi.java.l1g2.notebook;
 import asg.cliche.Command;
 import asg.cliche.Param;
 
-public class Reminder extends Note implements Expirable {
+/**
+ * Created by JavaCourses on 26.09.2017..
+ */
+public class Alarm extends Note implements Expirable {
+
     private String time;
 
+    public void setTime(@Param(name= "time")String time) {
+        this.time = time;
+    }
     @Command
     public String getTime() {
         return time;
-    }
-
-    @Command
-    public void setTime(@Param(name = "time") String time) {
-        this.time = time;
     }
 
     @Override
@@ -30,13 +32,14 @@ public class Reminder extends Note implements Expirable {
         if (super.contains(str)) {
             return true;
         }else if( time.contains(str)){
-                return true;}
-           return false;
-        }
+            return true;}
+        return false;
+    }
 
     @Override
     public boolean isExpired() {
         return false;
     }
-}
 
+
+}
